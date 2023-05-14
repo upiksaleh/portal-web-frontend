@@ -5,10 +5,14 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "@directus/sdk": "^10.3.3",
     "@nx/next": "16.1.4",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
     "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "swr": "^2.1.5",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
