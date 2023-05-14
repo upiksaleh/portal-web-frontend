@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@portal-web/shared-api": ["libs/shared/api/src/index.ts"],
-      "@portal-web/shared-base": ["libs/shared/base/src/index.ts"]
+      "@portal-web/shared-base": ["libs/shared/base/src/index.ts"],
+      "@portal-web/shared-ui": ["libs/shared/ui/src/index.ts"],
+      "@portal-web/shared-ui/server": ["libs/shared/ui/src/server.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
