@@ -1,0 +1,6 @@
+@import './base.css' layer(base);
+@import './components.css' layer(components);
+@import 'swiper/swiper-bundle.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
