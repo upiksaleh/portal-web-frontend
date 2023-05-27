@@ -45,6 +45,20 @@
           "codeCoverage": true
         }
       }
+    },
+    "generate-icons": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "libs/shared/base/icons"
+      },
+      "configurations": {
+        "default": {
+          "commands": ["node generate-default-icons.mjs"]
+        },
+        "to-dir": {
+          "commands": ["node to-dir.mjs"]
+        }
+      }
     }
   }
 }
