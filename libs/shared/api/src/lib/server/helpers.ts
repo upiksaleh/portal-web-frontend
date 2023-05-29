@@ -1,15 +1,12 @@
 import {FileType} from "@directus/sdk";
-import getConfig from "next/config";
-import {trimSlashes} from "@portal-web/shared-base";
+import {rightTrimSlashes, trimSlashes} from "@portal-web/shared-base";
 export const urlAssetCdn = (file: FileType | string) => {
-  const {publicRuntimeConfig} = getConfig()
   const filename_disk = typeof file === 'string' ? file : file.filename_disk;
-  return `${publicRuntimeConfig.CDN_URL}/portal-assets/live/${filename_disk}`;
+  return `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/portal-assets/live/${filename_disk}`;
 };
 
 export function getResourceApiUrl(path:string){
-  const {publicRuntimeConfig} = getConfig()
-  const baseUrl = publicRuntimeConfig.API_RESOURCE_BASE_URL ?? '/api/resources';
+  const baseUrl = rightTrimSlashes(process.env.NEXT_PUBLIC_API_RESOURCE_BASE_URL ?? '/api/resources');
   return `${baseUrl}/${trimSlashes(path)}`
 }
 export const imageFileNormalizer = (data: FileType) => {

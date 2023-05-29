@@ -2,7 +2,7 @@ import {DataListWithMeta, DirectusItemsListType} from "./types";
 import {ApiResourceProps} from "./types";
 import qs from "qs";
 import useSWR from "swr";
-import {getResourceApiUrl} from "./server/helpers";
+import {rightTrimSlashes} from "@portal-web/shared-base";
 
 export const resourceSwrFetcher = (key: string) => fetch(key).then((r) => r.json());
 
@@ -21,9 +21,9 @@ export function useResourceSWR<Key extends keyof DirectusItemsListType>
   const paramsQueryString = paramsQuery
     ? `?${qs.stringify(paramsQuery)}`
     : '';
-
+  const baseResourceUrl = rightTrimSlashes(process.env.NEXT_PUBLIC_API_RESOURCE_BASE_URL ?? '/api/resources');
   return useSWR<DataListWithMeta>(
-    `${getResourceApiUrl(key)}${pathQueryString}${paramsQueryString}`,
+    `${baseResourceUrl}/${key}${pathQueryString}${paramsQueryString}`,
     fetcher ?? resourceSwrFetcher
   );
 }

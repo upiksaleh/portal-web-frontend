@@ -1,8 +1,6 @@
-import getConfig from 'next/config';
 import { Directus } from '@directus/sdk';
 import { DirectusItemsListType } from '../types';
 
-const { serverRuntimeConfig } = getConfig();
 
 export const STATUS_DRAFT = 'draft';
 export const STATUS_PUBLISHED = 'published';
@@ -10,9 +8,11 @@ export const STATUS_ARCHIVED = 'archived';
 
 export type DirectusStatusType = 'draft' | 'published' | 'archive';
 
-export const directusInstance = () =>
-  new Directus<DirectusItemsListType>(serverRuntimeConfig.directus.url, {
+export const directusInstance = () => {
+  if(!process.env.BACKEND_URL) throw Error('env BACKEND_URL perlu diset')
+  return new Directus<DirectusItemsListType>(process.env.BACKEND_URL, {
     auth: {
-      staticToken: serverRuntimeConfig.directus.staticToken,
+      staticToken: process.env.BACKEND_TOKEN,
     },
   });
+};
