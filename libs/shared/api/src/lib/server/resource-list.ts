@@ -1,14 +1,21 @@
 import {
   ApplicationCategoriesResource,
   ApplicationsResource,
-  BannerInfoResource, DocumentCategoriesResource, DocumentsResource, GrafikInfoResource,
+  BannerInfoResource,
+  DocumentCategoriesResource,
+  DocumentsResource,
+  GrafikInfoResource,
   NewsCategoriesResource,
-  NewsResource, OrganizationsResource, OrganizationTypesResource,
+  NewsResource,
+  OrganizationDocumentsResource,
+  OrganizationPejabatResource,
+  OrganizationsResource,
+  OrganizationTypesResource,
   PortalWebSettingsResource,
-  PublicServicesResource
+  PublicServicesResource, WebNewsResource,
+  WebsitesResource
 } from "./resources";
-import {BaseResourceClass} from "./resource-class";
-import {DirectusItemsListType, ApiResourceProps} from "../types";
+import {DirectusItemsListType} from "../types";
 
 export const resourceLists: Record<keyof DirectusItemsListType | string, any> = {
   application_categories: ApplicationCategoriesResource,
@@ -19,10 +26,14 @@ export const resourceLists: Record<keyof DirectusItemsListType | string, any> = 
   grafik_info: GrafikInfoResource,
   news: NewsResource,
   news_categories: NewsCategoriesResource,
+  organization_documents: OrganizationDocumentsResource,
+  organization_pejabat: OrganizationPejabatResource,
   organization_types: OrganizationTypesResource,
   organizations: OrganizationsResource,
   portal_web_settings: PortalWebSettingsResource,
-  public_services: PublicServicesResource
+  public_services: PublicServicesResource,
+  websites: WebsitesResource,
+  web_news: WebNewsResource
 }
 
 export function getResourceClass<Key extends keyof DirectusItemsListType>(key: Key | string) {

@@ -1,13 +1,13 @@
 import {FileType, UserType} from "@directus/sdk";
-import {NewsCategoriesItemType} from "./news_categories";
+import {WebsitesItemType} from "./websites";
 import {DirectusStatusType} from "../../server/directus";
 
-export type NewsItemType = {
+export type WebNewsItemType = {
   id: string;
   title: string;
   slug: string;
   publish_date: Date;
-  category: string | NewsCategoriesItemType;
+  website: string | WebsitesItemType;
   image_cover: string | FileType;
   status: DirectusStatusType;
   description: string;
@@ -15,6 +15,7 @@ export type NewsItemType = {
   shared_count: number;
   reporter: string;
   user_created: UserType,
+  tags?:string[]
   content: {
     time: number,
     blocks:Record<string, any>[],

@@ -1,11 +1,19 @@
 import {
   ApplicationCategoriesItemType,
   ApplicationsItemType,
-  BannerInfoItemType, DocumentCategoriesItemType, DocumentsItemType, GrafikInfoItemType,
+  BannerInfoItemType,
+  DocumentCategoriesItemType,
+  DocumentsItemType,
+  GrafikInfoItemType,
   NewsCategoriesItemType,
-  NewsItemType, OrganizationsItemType, OrganizationTypesItemType,
+  NewsItemType,
+  OrganizationDocumentsItemType,
+  OrganizationPejabatItemType,
+  OrganizationsItemType,
+  OrganizationTypesItemType,
   PortalWebSettingsItemType,
-  PublicServicesItemType
+  PublicServicesItemType, WebNewsItemType,
+  WebsitesItemType
 } from "./items-type";
 
 export type DirectusItemsListType = {
@@ -17,8 +25,12 @@ export type DirectusItemsListType = {
   grafik_info: GrafikInfoItemType,
   news: NewsItemType,
   news_categories: NewsCategoriesItemType,
+  organization_documents: OrganizationDocumentsItemType
+  organization_pejabat: OrganizationPejabatItemType,
   organization_types: OrganizationTypesItemType,
   organizations: OrganizationsItemType,
   portal_web_settings: PortalWebSettingsItemType
   public_services: PublicServicesItemType
+  websites: WebsitesItemType,
+  web_news: WebNewsItemType
 }

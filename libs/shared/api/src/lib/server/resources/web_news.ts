@@ -3,8 +3,8 @@ import {imageFileNormalizer} from "../helpers";
 import {dateUtils} from "@portal-web/shared-base";
 import {STATUS_PUBLISHED} from "../directus";
 
-export class NewsResource extends BaseResourceClass<'news'> {
-  protected item = 'news';
+export class WebNewsResource extends BaseResourceClass<'web_news'> {
+  protected item = 'web_news';
 
   // protected key = 'news';
 
@@ -27,9 +27,9 @@ export class NewsResource extends BaseResourceClass<'news'> {
         'publish_date',
         'reporter',
         'image_cover.*',
-        'category.id',
-        'category.name',
-        'category.slug',
+        'website.id',
+        'website.id',
+        'tags',
         'user_created.*',
         'view_count',
         'shared_count'
@@ -46,6 +46,18 @@ export class NewsResource extends BaseResourceClass<'news'> {
       popular() {
         query.sort = ['-view_count'];
       },
+      byWebAndSlug: () => {
+        if (!this.pathQuery[1]) this.errorThrow('ID Web diperlukan')
+        if (!this.pathQuery[2]) this.errorThrow('Slug diperlukan')
+        this.paramsQueryProcess = false;
+        this.addField(['content'])
+        this.query.limit = 1;
+        this.type = 'item'
+        this.andFilter({
+          website: {id:{_eq: this.pathQuery[1]}},
+          slug: {_eq: this.pathQuery[2]}
+        });
+      },
       bySlug: () => {
         if (!this.pathQuery[1]) this.errorThrow('Slug diperlukan')
         this.paramsQueryProcess = false;
@@ -56,26 +68,7 @@ export class NewsResource extends BaseResourceClass<'news'> {
           slug: {_eq: this.pathQuery[1]}
         })
       },
-      byCategorySlug: () => {
-        if (!this.pathQuery[1]) this.errorThrow('Slug Kategori diperlukan')
-        this.andFilter({
-          category: {
-            slug: {
-              _eq: this.pathQuery[1]
-            }
-          }
-        })
-      },
-      byCategoryName: () => {
-        if (!this.pathQuery[1]) this.errorThrow('Nama Kategori diperlukan')
-        this.andFilter({
-          category: {
-            name: {
-              _eq: this.pathQuery[1]
-            }
-          }
-        })
-      },
+
       shared: async () => {
         if (!this.pathQuery[1]) this.errorThrow('ID diperlukan')
         this.query.fields = ['shared_count'];

@@ -117,6 +117,7 @@ export abstract class BaseResourceClass<C extends keyof DirectusItemsListType, I
         // @ts-ignore
         return _dataNormalizer[0] as Record<string, any>
       } else {
+        this.errorThrow('item tidak ditemukan');
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         return data;
