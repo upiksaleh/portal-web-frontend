@@ -89,10 +89,6 @@ module.exports = () => ({
       scale: ['group-hover'],
     },
   },
-
-  corePlugins: {
-    aspectRatio: false,
-  },
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
