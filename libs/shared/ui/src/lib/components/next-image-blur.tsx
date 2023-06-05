@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { useState } from 'react';
-import { ImageProps } from 'next/dist/client/image';
+import {useState} from 'react';
+import {ImageProps} from 'next/dist/client/image';
 import clsx from 'clsx';
 
 export const UINextImageBlur = (
@@ -13,14 +13,13 @@ export const UINextImageBlur = (
       {...props}
       className={clsx(
         props.className,
-        !loaded ? 'bg-gray-200 animate-pulse blur-sm' : 'blur-none'
+        'duration-700 ease-in-out',
+        !loaded ? 'blur-xl min-h-[20rem] bg-base-200 w-full' : 'blur-none'
       )}
-      onLoadingComplete={() =>
-        setTimeout(() => {
-          setLoaded(true);
-          if (props.loadingComplete) props.loadingComplete();
-        }, props.timeout ?? 1000)
-      }
+      onLoadingComplete={() => {
+        setLoaded(true);
+        if (props.loadingComplete) props.loadingComplete();
+      }}
     />
   );
 };
