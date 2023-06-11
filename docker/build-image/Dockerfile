@@ -9,10 +9,9 @@ RUN apk --no-cache add \
   && ln -sf /usr/bin/python3 /usr/bin/python
 
 WORKDIR /app
-COPY package.json yarn.lock* ./
-# Install package manager
-RUN yarn install --frozen-lockfile --prod
-RUN yarn add sharp
+COPY package.json ./
+RUN yarn install --prod
+RUN yarn add sharp --prod
 
 FROM base AS runner
 WORKDIR /app
