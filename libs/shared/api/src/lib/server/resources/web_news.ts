@@ -46,6 +46,12 @@ export class WebNewsResource extends BaseResourceClass<'web_news'> {
       popular() {
         query.sort = ['-view_count'];
       },
+      byWebId:()=>{
+        if (!this.pathQuery[1]) this.errorThrow('ID Web diperlukan')
+        this.andFilter({
+          website: {id:{_eq: this.pathQuery[1]}},
+        });
+      },
       byWebAndSlug: () => {
         if (!this.pathQuery[1]) this.errorThrow('ID Web diperlukan')
         if (!this.pathQuery[2]) this.errorThrow('Slug diperlukan')
