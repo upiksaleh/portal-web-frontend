@@ -6,7 +6,7 @@ import {
   parseColors,
   isEmptyColor,
 } from '@iconify/tools';
-import * as path from "path";
+import * as path from 'path';
 
 (async () => {
   // Import icons
@@ -56,7 +56,11 @@ import * as path from "path";
 
   // Export as IconifyJSON
   const exported = JSON.stringify(iconSet.export(), null, '\t') + '\n';
-  const tsfile = `export default ${exported}`
+  const tsfile = `export default ${exported}`;
   // Save to file
-  await fs.writeFile(`../src/lib/initialize/icon-collections.ts`, tsfile, 'utf8');
+  await fs.writeFile(
+    `../src/lib/initialize/icon-collections.ts`,
+    tsfile,
+    'utf8'
+  );
 })();

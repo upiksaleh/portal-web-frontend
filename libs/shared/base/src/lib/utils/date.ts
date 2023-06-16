@@ -17,7 +17,9 @@ import {
   isThisMonth,
   isToday,
   startOfMonth,
-  startOfWeek, formatDistance, subDays,
+  startOfWeek,
+  formatDistance,
+  subDays,
 } from 'date-fns';
 
 import { formatInTimeZone } from 'date-fns-tz';

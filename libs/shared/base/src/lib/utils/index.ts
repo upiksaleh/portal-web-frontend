@@ -1,9 +1,9 @@
 export function trimSlashes(str) {
-  return str.replace(/^\/|\/$/g, '')
+  return str.replace(/^\/|\/$/g, '');
 }
 
 export function rightTrimSlashes(str) {
-  return str.replace(/\/$/, "");
+  return str.replace(/\/$/, '');
 }
 
-export * as dateUtils from './date'
+export * as dateUtils from './date';
