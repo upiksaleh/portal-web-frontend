@@ -1,1 +1,1 @@
-export * from './gpr-widget'
+export * from './gpr-widget';

@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import {useState} from 'react';
-import {ImageProps} from 'next/dist/client/image';
+import { useState } from 'react';
+import { ImageProps } from 'next/dist/client/image';
 import clsx from 'clsx';
 
 export const UINextImageBlur = (
@@ -23,4 +23,3 @@ export const UINextImageBlur = (
     />
   );
 };
-

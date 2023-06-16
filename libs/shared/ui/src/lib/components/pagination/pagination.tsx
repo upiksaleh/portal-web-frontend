@@ -1,14 +1,13 @@
-import {Listbox, Transition} from '@headlessui/react';
+import { Listbox, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import {UIIcon} from "../icon/icon";
+import { UIIcon } from '../icon/icon';
 
-function SelectPerPage({items, value, onChange, showSearch = true}) {
+function SelectPerPage({ items, value, onChange, showSearch = true }) {
   return (
     <div className="mx-1">
       <Listbox value={value} onChange={onChange}>
         <div className="relative w-full max-w-max">
-          <Listbox.Button
-            className="btn btn-sm btn-ghost w-full cursor-default rounded-lg bg-white pl-1 pr-7 text-left shadow-md sm:text-sm">
+          <Listbox.Button className="btn btn-sm btn-ghost w-full cursor-default rounded-lg bg-white pl-1 pr-7 text-left shadow-md sm:text-sm">
             <span className="block truncate">{value}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center">
               <UIIcon
@@ -30,7 +29,7 @@ function SelectPerPage({items, value, onChange, showSearch = true}) {
                 {items.map((item, index) => (
                   <Listbox.Option
                     key={index}
-                    className={({active}) =>
+                    className={({ active }) =>
                       `relative cursor-default select-none text-center p-1 ${
                         active
                           ? 'bg-primary-100 text-amber-900'
@@ -40,7 +39,7 @@ function SelectPerPage({items, value, onChange, showSearch = true}) {
                     value={item}
                     title={item}
                   >
-                    {({selected}) => (
+                    {({ selected }) => (
                       <>
                         <span
                           className={`block truncate ${
@@ -68,17 +67,16 @@ export type UIPaginationProps = {
   limit: number;
   setLimit: any;
   setPage: any;
-  customPerPages?: number[]
-}
-export function UIPagination(
-  {
-    total,
-    limit,
-    page,
-    setLimit,
-    setPage,
-    customPerPages
-  }: UIPaginationProps) {
+  customPerPages?: number[];
+};
+export function UIPagination({
+  total,
+  limit,
+  page,
+  setLimit,
+  setPage,
+  customPerPages,
+}: UIPaginationProps) {
   const perPages = customPerPages ?? [5, 10, 20, 25, 50, 100];
   const total_pages = Math.ceil(total / limit);
 
@@ -87,11 +85,7 @@ export function UIPagination(
       <div className="grid grid-cols-1 lg:grid-cols-2 text-sm gap-4">
         <div className="flex items-center justify-center lg:justify-start">
           <span>Tampilkan</span>
-          <SelectPerPage
-            value={limit}
-            onChange={setLimit}
-            items={perPages}
-          />
+          <SelectPerPage value={limit} onChange={setLimit} items={perPages} />
           <div className="ml-1 border-l pl-1">total {total}</div>
         </div>
         <div className="text-right flex items-center justify-end">
@@ -99,7 +93,7 @@ export function UIPagination(
           <SelectPerPage
             value={page}
             onChange={setPage}
-            items={Array.from({length: total_pages}, (_, i) => i + 1)}
+            items={Array.from({ length: total_pages }, (_, i) => i + 1)}
           />
           <span className="border-r ml-1 mr-2 pr-2">
             dari <strong>{total_pages}</strong>
@@ -110,7 +104,7 @@ export function UIPagination(
             })}
             onClick={() => setPage(page - 1)}
           >
-            <UIIcon icon="base:chevron-left" className="w-6 h-6 font-bold"/>
+            <UIIcon icon="base:chevron-left" className="w-6 h-6 font-bold" />
           </button>
           <button
             className={clsx('ml-1 btn btn-sm btn-outline', {
@@ -118,7 +112,7 @@ export function UIPagination(
             })}
             onClick={() => setPage(page + 1)}
           >
-            <UIIcon icon="base:chevron-right" className="w-6 h-6 font-bold"/>
+            <UIIcon icon="base:chevron-right" className="w-6 h-6 font-bold" />
           </button>
         </div>
       </div>

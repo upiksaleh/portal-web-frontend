@@ -8,7 +8,6 @@ interface BaseContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 export const UIContainer = forwardRef<HTMLDivElement, BaseContainerProps>(
   (props, ref): JSX.Element => (
     <div className={clsx('ui-container', props.className)} ref={ref}>
-
       {props.children}
     </div>
   )

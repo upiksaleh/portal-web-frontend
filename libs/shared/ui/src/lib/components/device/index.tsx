@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import {UIIcon} from "../icon/icon";
+import { UIIcon } from '../icon/icon';
 
 export const UIDevice = dynamic(() => import('./device'), {
   ssr: false,
@@ -11,4 +11,3 @@ export const UIDevice = dynamic(() => import('./device'), {
     />
   ),
 });
-

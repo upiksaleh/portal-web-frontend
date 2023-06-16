@@ -1,10 +1,12 @@
-import {createContext, FC, ReactElement, useContext, useState} from "react";
+import { createContext, FC, ReactElement, useContext, useState } from 'react';
 
-import initialize, {InitializePropsType} from '@portal-web/shared-base/initialize';
+import initialize, {
+  InitializePropsType,
+} from '@portal-web/shared-base/initialize';
 
 type AddConfigObject = {
-  key: string
-  value: any
+  key: string;
+  value: any;
 };
 export type UIConfigContextState = {
   config: InitializePropsType;
@@ -14,31 +16,31 @@ export type UIConfigContextState = {
 const contextDefaultValues: UIConfigContextState = {
   config: {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  addConfig: () => {
-  }
+  addConfig: () => {},
 };
-export const UIConfigContext = createContext<UIConfigContextState>(
-  contextDefaultValues
-);
+export const UIConfigContext =
+  createContext<UIConfigContextState>(contextDefaultValues);
 type ProviderProps = {
-  config: UIConfigContextState['config'],
-  children: ReactElement
-}
-export const UIConfigProvider: FC<ProviderProps> = ({config: initialConfig, children}) => {
+  config: UIConfigContextState['config'];
+  children: ReactElement;
+};
+export const UIConfigProvider: FC<ProviderProps> = ({
+  config: initialConfig,
+  children,
+}) => {
   const [config, setConfig] = useState<any>(initialConfig);
   initialize(initialConfig);
 
   const addConfig = (prevConfig: any, newConfig: AddConfigObject) => {
     prevConfig[newConfig.key] = newConfig.value;
     setConfig(prevConfig);
-  }
+  };
   return (
-    <UIConfigContext.Provider value={{config: config, addConfig}}>
+    <UIConfigContext.Provider value={{ config: config, addConfig }}>
       {children}
     </UIConfigContext.Provider>
   );
 };
-
 
 export function useUIConfigContext() {
   return useContext(UIConfigContext);

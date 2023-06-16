@@ -1,5 +1,5 @@
-import {FC, useEffect, useState} from 'react';
-import {UIIcon} from "../icon/icon";
+import { FC, useEffect, useState } from 'react';
+import { UIIcon } from '../icon/icon';
 
 interface UISearchInputProps {
   currentValue?: string;
@@ -9,17 +9,15 @@ interface UISearchInputProps {
   onClear?: () => void;
 }
 
-export const UISearchInput: FC<UISearchInputProps> = (
-  {
-    currentValue,
-    placeholder = 'Temukan Informasi',
-    onSubmit,onClear
-  }
-) => {
+export const UISearchInput: FC<UISearchInputProps> = ({
+  currentValue,
+  placeholder = 'Temukan Informasi',
+  onSubmit,
+  onClear,
+}) => {
   const [value, setValue] = useState(currentValue ?? '');
   useEffect(() => {
-    if (currentValue)
-      setValue(currentValue);
+    if (currentValue) setValue(currentValue);
   }, [currentValue]);
   const _onSubmit = (event) => {
     event.preventDefault();
@@ -31,7 +29,7 @@ export const UISearchInput: FC<UISearchInputProps> = (
       className="focus-within:border-primary relative flex items-center gap-2 rounded-lg bg-white border border-base-200 px-[9px] w-full py-[6px]"
       onSubmit={_onSubmit}
     >
-      <UIIcon icon="base:magnify" className="w-6 h-6 text-gray-400"/>
+      <UIIcon icon="base:magnify" className="w-6 h-6 text-gray-400" />
       <input
         type="text"
         name="q"
@@ -43,13 +41,13 @@ export const UISearchInput: FC<UISearchInputProps> = (
       {value && (
         <button
           onClick={(event) => {
-            if(onClear) onClear()
-            setValue('')
+            if (onClear) onClear();
+            setValue('');
           }}
           type="button"
           className="text-base-content"
         >
-          <UIIcon icon="base:close"/>
+          <UIIcon icon="base:close" />
         </button>
       )}
       <button
@@ -60,4 +58,4 @@ export const UISearchInput: FC<UISearchInputProps> = (
       </button>
     </form>
   );
-}
+};
