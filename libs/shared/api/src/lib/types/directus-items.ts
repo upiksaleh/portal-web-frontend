@@ -12,25 +12,26 @@ import {
   OrganizationsItemType,
   OrganizationTypesItemType,
   PortalWebSettingsItemType,
-  PublicServicesItemType, WebNewsItemType,
-  WebsitesItemType
-} from "./items-type";
+  PublicServicesItemType,
+  WebNewsItemType,
+  WebsitesItemType,
+} from './items-type';
 
 export type DirectusItemsListType = {
-  application_categories: ApplicationCategoriesItemType,
-  applications: ApplicationsItemType,
-  banner_info: BannerInfoItemType,
-  document_categories: DocumentCategoriesItemType,
-  documents: DocumentsItemType,
-  grafik_info: GrafikInfoItemType,
-  news: NewsItemType,
-  news_categories: NewsCategoriesItemType,
-  organization_documents: OrganizationDocumentsItemType
-  organization_pejabat: OrganizationPejabatItemType,
-  organization_types: OrganizationTypesItemType,
-  organizations: OrganizationsItemType,
-  portal_web_settings: PortalWebSettingsItemType
-  public_services: PublicServicesItemType
-  websites: WebsitesItemType,
-  web_news: WebNewsItemType
-}
+  application_categories: ApplicationCategoriesItemType;
+  applications: ApplicationsItemType;
+  banner_info: BannerInfoItemType;
+  document_categories: DocumentCategoriesItemType;
+  documents: DocumentsItemType;
+  grafik_info: GrafikInfoItemType;
+  news: NewsItemType;
+  news_categories: NewsCategoriesItemType;
+  organization_documents: OrganizationDocumentsItemType;
+  organization_pejabat: OrganizationPejabatItemType;
+  organization_types: OrganizationTypesItemType;
+  organizations: OrganizationsItemType;
+  portal_web_settings: PortalWebSettingsItemType;
+  public_services: PublicServicesItemType;
+  websites: WebsitesItemType;
+  web_news: WebNewsItemType;
+};

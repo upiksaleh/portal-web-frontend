@@ -1,5 +1,5 @@
-import {OrganizationsItemType} from "./organizations";
-import {FileType} from "@directus/sdk";
+import { OrganizationsItemType } from './organizations';
+import { FileType } from '@directus/sdk';
 
 export type OrganizationPejabatItemType = {
   id: string;
@@ -7,6 +7,6 @@ export type OrganizationPejabatItemType = {
   nip: string;
   jabatan: string;
   organization: string | OrganizationsItemType;
-  image: string | FileType
-  profil: string
+  image: string | FileType;
+  profil: string;
 };

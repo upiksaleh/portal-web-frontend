@@ -1,7 +1,7 @@
-import {BaseResourceClass} from "../resource-class";
-import {imageFileNormalizer} from "../helpers";
-import {dateUtils} from "@portal-web/shared-base";
-import {STATUS_PUBLISHED} from "../directus";
+import { BaseResourceClass } from '../resource-class';
+import { imageFileNormalizer } from '../helpers';
+import { dateUtils } from '@portal-web/shared-base';
+import { STATUS_PUBLISHED } from '../directus';
 
 export class NewsResource extends BaseResourceClass<'news'> {
   protected item = 'news';
@@ -16,8 +16,8 @@ export class NewsResource extends BaseResourceClass<'news'> {
       sort: ['-publish_date'],
       filter: {
         status: {
-          _eq: STATUS_PUBLISHED
-        }
+          _eq: STATUS_PUBLISHED,
+        },
       },
       fields: [
         'id',
@@ -32,9 +32,9 @@ export class NewsResource extends BaseResourceClass<'news'> {
         'category.slug',
         'user_created.*',
         'view_count',
-        'shared_count'
+        'shared_count',
       ],
-    }
+    };
   }
 
   apiByPaths() {
@@ -47,74 +47,79 @@ export class NewsResource extends BaseResourceClass<'news'> {
         query.sort = ['-view_count'];
       },
       bySlug: () => {
-        if (!this.pathQuery[1]) this.errorThrow('Slug diperlukan')
+        if (!this.pathQuery[1]) this.errorThrow('Slug diperlukan');
         this.paramsQueryProcess = false;
-        this.addField(['content'])
+        this.addField(['content']);
         this.query.limit = 1;
-        this.type = 'item'
+        this.type = 'item';
         this.andFilter({
-          slug: {_eq: this.pathQuery[1]}
-        })
+          slug: { _eq: this.pathQuery[1] },
+        });
       },
       byCategorySlug: () => {
-        if (!this.pathQuery[1]) this.errorThrow('Slug Kategori diperlukan')
+        if (!this.pathQuery[1]) this.errorThrow('Slug Kategori diperlukan');
         this.andFilter({
           category: {
             slug: {
-              _eq: this.pathQuery[1]
-            }
-          }
-        })
+              _eq: this.pathQuery[1],
+            },
+          },
+        });
       },
       byCategoryName: () => {
-        if (!this.pathQuery[1]) this.errorThrow('Nama Kategori diperlukan')
+        if (!this.pathQuery[1]) this.errorThrow('Nama Kategori diperlukan');
         this.andFilter({
           category: {
             name: {
-              _eq: this.pathQuery[1]
-            }
-          }
-        })
+              _eq: this.pathQuery[1],
+            },
+          },
+        });
       },
       shared: async () => {
-        if (!this.pathQuery[1]) this.errorThrow('ID diperlukan')
+        if (!this.pathQuery[1]) this.errorThrow('ID diperlukan');
         this.query.fields = ['shared_count'];
-        this.andFilter({id: {_eq: this.pathQuery[1]}})
+        this.andFilter({ id: { _eq: this.pathQuery[1] } });
 
-        return async ({data}) => {
-          if (!data.length) this.errorThrow('tidak ditemukan')
+        return async ({ data }) => {
+          if (!data.length) this.errorThrow('tidak ditemukan');
           const _data = data[0];
-          const shared_count = (_data.shared_count ?? 0) + 1
+          const shared_count = (_data.shared_count ?? 0) + 1;
           await this.itemsHandler().updateOne(this.pathQuery[1], {
-            shared_count
-          })
+            shared_count,
+          });
           return {
             success: true,
-            shared_count
+            shared_count,
           };
         };
-      }
-    }
+      },
+    };
   }
 
   normalizerFields() {
     return {
       reporter: (value, d) => {
-        return value ?? (d.user_created.content_author_name ?? `${d.user_created.first_name} ${d.user_created.last_name}`)
-      }
-    }
+        return (
+          value ??
+          d.user_created.content_author_name ??
+          `${d.user_created.first_name} ${d.user_created.last_name}`
+        );
+      },
+    };
   }
 
   protected normalizer(data: Record<string, any>) {
-    data.writer = data.user_created.content_author_name ?? `${data.user_created.first_name} ${data.user_created.last_name}`
+    data.writer =
+      data.user_created.content_author_name ??
+      `${data.user_created.first_name} ${data.user_created.last_name}`;
     data.image_cover = imageFileNormalizer(data.image_cover);
     data.publish_date_format = dateUtils.format(data.publish_date, {
       day: 'numeric',
       month: 'long',
       year: 'numeric',
     });
-    delete data.user_created
+    delete data.user_created;
     // delete data.image_cover
   }
-
 }

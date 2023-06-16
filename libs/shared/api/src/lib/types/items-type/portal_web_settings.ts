@@ -1,4 +1,3 @@
-
 export type PortalWebSettingsItemType = {
   id: string;
   address: string;

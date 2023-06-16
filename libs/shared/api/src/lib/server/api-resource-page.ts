@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import qs from 'qs';
-import {resourceLists} from "./resource-list";
-import * as process from "process";
+import { resourceLists } from './resource-list';
+import * as process from 'process';
 
 // type CollectionsListType = keyof typeof directusItems
 
@@ -22,11 +22,10 @@ const sendError = (res: NextApiResponse, message: any) => {
 
 export function ApiResourcePage(config: Config) {
   return async function handler(req: NextApiRequest, res: NextApiResponse) {
-
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     );
     // res.setHeader('Cache-Control', 'no-store, max-age=0')
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -50,10 +49,10 @@ export function ApiResourcePage(config: Config) {
         // const data = await _res.fetch();
         res.status(200).json(data);
       } catch (e) {
-        if(process.env.NODE_ENV === 'development') {
+        if (process.env.NODE_ENV === 'development') {
           if (e && e['errors']) sendError(res, e['errors']);
           else if (e && e['message']) sendError(res, e['message']);
-        }else{
+        } else {
           sendError(res, 'Terjadi kesalahan');
         }
       }

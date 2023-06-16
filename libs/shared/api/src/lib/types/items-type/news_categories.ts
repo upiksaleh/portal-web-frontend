@@ -1,4 +1,3 @@
-
 export type NewsCategoriesItemType = {
   id: string;
   name: string;

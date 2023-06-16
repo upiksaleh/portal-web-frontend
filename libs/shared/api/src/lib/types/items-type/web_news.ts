@@ -1,6 +1,6 @@
-import {FileType, UserType} from "@directus/sdk";
-import {WebsitesItemType} from "./websites";
-import {DirectusStatusType} from "../../server/directus";
+import { FileType, UserType } from '@directus/sdk';
+import { WebsitesItemType } from './websites';
+import { DirectusStatusType } from '../../server/directus';
 
 export type WebNewsItemType = {
   id: string;
@@ -14,11 +14,11 @@ export type WebNewsItemType = {
   view_count: number;
   shared_count: number;
   reporter: string;
-  user_created: UserType,
-  tags?:string[]
+  user_created: UserType;
+  tags?: string[];
   content: {
-    time: number,
-    blocks:Record<string, any>[],
-    version: string
-  }
+    time: number;
+    blocks: Record<string, any>[];
+    version: string;
+  };
 };

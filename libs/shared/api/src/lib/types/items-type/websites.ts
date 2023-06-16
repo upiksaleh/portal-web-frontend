@@ -1,6 +1,6 @@
-import {FileType, UserType} from "@directus/sdk";
-import {OrganizationsItemType} from "./organizations";
-import {DirectusStatusType} from "../../server/directus";
+import { FileType, UserType } from '@directus/sdk';
+import { OrganizationsItemType } from './organizations';
+import { DirectusStatusType } from '../../server/directus';
 
 export type WebsitesItemType = {
   id: string;
@@ -10,10 +10,10 @@ export type WebsitesItemType = {
   slug: string;
   domain: string;
   domain_alias?: string;
-  organization?:string|OrganizationsItemType
+  organization?: string | OrganizationsItemType;
 
-  user_created: string | UserType
-  user_updated: string | UserType
-  date_updated?: Date
-  date_created: Date
+  user_created: string | UserType;
+  user_updated: string | UserType;
+  date_updated?: Date;
+  date_created: Date;
 };
