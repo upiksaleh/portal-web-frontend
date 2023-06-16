@@ -24,6 +24,20 @@ export class WebsitesResource extends BaseResourceClass<'websites'> {
         this.andFilter({domain: {_eq: this.pathQuery[1]}});
         this.query.limit = 1;
         this.type = 'item'
+      },
+      byDomainOrAlias: () => {
+        if (!this.pathQuery[1]) this.errorThrow('Domain diperlukan')
+        this.andFilter({_or:[{domain: {_eq: this.pathQuery[1]}}, {domain_alias:{_contains:this.pathQuery[1]}}]});
+        this.query.limit = 1;
+        this.type = 'item'
+      }
+    }
+  }
+
+  normalizerFields() {
+    return {
+      domain_alias: (value, d) => {
+        return value ? value.split('\n') : [];
       }
     }
   }
