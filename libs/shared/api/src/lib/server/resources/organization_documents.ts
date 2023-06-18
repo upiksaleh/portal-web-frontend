@@ -35,6 +35,7 @@ export class OrganizationDocumentsResource extends BaseResourceClass<'organizati
   }
 
   protected normalizer(data: Record<string, any>) {
+    data.category = {id: data.category, name: data.category};
     data.publish_date_format = data.publish_date
       ? dateUtils.format(data.publish_date, {
           day: 'numeric',
