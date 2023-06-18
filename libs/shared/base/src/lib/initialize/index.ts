@@ -1,12 +1,12 @@
 import {
   addAPIProvider,
-  addCollection,
   disableCache,
   PartialIconifyAPIConfig,
 } from '@iconify/react';
 // import iconsDefault from './icon-collections'
 
 export type InitializePropsType = {
+  publicUrl?: string;
   icons?: {
     useLocal?: true;
     APIProviders?: ({ name: string } & PartialIconifyAPIConfig)[];

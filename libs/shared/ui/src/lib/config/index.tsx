@@ -45,3 +45,8 @@ export const UIConfigProvider: FC<ProviderProps> = ({
 export function useUIConfigContext() {
   return useContext(UIConfigContext);
 }
+
+// config value
+export function useUIConfigContextValue() {
+  return useUIConfigContext().config;
+}

@@ -40,15 +40,13 @@ function SelectPerPage({ items, value, onChange, showSearch = true }) {
                     title={item}
                   >
                     {({ selected }) => (
-                      <>
-                        <span
-                          className={`block truncate ${
-                            selected ? 'font-bold' : 'font-normal'
-                          }`}
-                        >
-                          {item}
-                        </span>
-                      </>
+                      <span
+                        className={`block truncate ${
+                          selected ? 'font-bold' : 'font-normal'
+                        }`}
+                      >
+                        {item}
+                      </span>
                     )}
                   </Listbox.Option>
                 ))}
