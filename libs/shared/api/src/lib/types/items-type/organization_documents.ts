@@ -10,6 +10,7 @@ export type OrganizationDocumentsItemType = {
   category: string;
   title: string;
   description?: string;
+  slug?: string;
   file: string | FileType;
 
   user_created: string | UserType;

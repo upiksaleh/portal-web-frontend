@@ -18,6 +18,7 @@ export class OrganizationDocumentsResource extends BaseResourceClass<'organizati
         'date_updated',
         'title',
         'description',
+        'slug',
         'file.*',
         'category',
         'organization.id',
@@ -54,8 +55,24 @@ export class OrganizationDocumentsResource extends BaseResourceClass<'organizati
     return {
       byOrganizationId: () => {
         if (!this.pathQuery[1]) this.errorThrow('ID Organisasi diperlukan');
-        this.query.limit = -1;
+        this.query.limit = 10;
         this.andFilter({ organization: { id: { _eq: this.pathQuery[1] } } });
+      },
+      byId: () => {
+        if (!this.pathQuery[1]) this.errorThrow('ID dokumen diperlukan');
+        this.query.limit = 1;
+        this.paramsQueryProcess = false;
+        this.type = 'item';
+        this.andFilter({ id: { _eq: this.pathQuery[1] } });
+      },
+      bySlug: () => {
+        if (!this.pathQuery[1]) this.errorThrow('Slug diperlukan');
+        this.paramsQueryProcess = false;
+        this.query.limit = 1;
+        this.type = 'item';
+        this.andFilter({
+          slug: { _eq: this.pathQuery[1] },
+        });
       },
     };
   }
