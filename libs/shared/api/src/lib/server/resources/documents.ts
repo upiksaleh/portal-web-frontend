@@ -12,6 +12,7 @@ export class DocumentsResource extends BaseResourceClass<'documents'> {
         'description',
         'publish_date',
         'title',
+        'slug',
         'category.id',
         'category.name',
         'file.*',
@@ -24,6 +25,15 @@ export class DocumentsResource extends BaseResourceClass<'documents'> {
 
   protected apiByPaths(): Record<string, any> {
     return {
+      bySlug: () => {
+        if (!this.pathQuery[1]) this.errorThrow('Slug diperlukan');
+        this.paramsQueryProcess = false;
+        this.query.limit = 1;
+        this.type = 'item';
+        this.andFilter({
+          slug: { _eq: this.pathQuery[1] },
+        });
+      },
       byCategoryId: () => {
         if (!this.pathQuery[1]) this.errorThrow('ID Kategori diperlukan');
         this.andFilter({ category: { _eq: this.pathQuery[1] } });

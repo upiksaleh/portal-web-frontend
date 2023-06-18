@@ -10,6 +10,7 @@ export type DocumentsItemType = {
   file: string | FileType;
   title: string;
   description: string;
+  slug: string;
   user_created: string | UserType;
   user_updated: string | UserType;
   date_updated?: Date;
