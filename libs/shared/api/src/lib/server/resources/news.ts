@@ -66,6 +66,17 @@ export class NewsResource extends BaseResourceClass<'news'> {
           },
         });
       },
+      byCategorySlugPopular: () => {
+        if (!this.pathQuery[1]) this.errorThrow('Slug Kategori diperlukan');
+        query.sort = ['-view_count'];
+        this.andFilter({
+          category: {
+            slug: {
+              _eq: this.pathQuery[1],
+            },
+          },
+        });
+      },
       byCategoryName: () => {
         if (!this.pathQuery[1]) this.errorThrow('Nama Kategori diperlukan');
         this.andFilter({
