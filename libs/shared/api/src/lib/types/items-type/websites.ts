@@ -11,6 +11,7 @@ export type WebsitesItemType = {
   domain: string;
   domain_alias?: string;
   organization?: string | OrganizationsItemType;
+  modules?: string[];
 
   user_created: string | UserType;
   user_updated: string | UserType;

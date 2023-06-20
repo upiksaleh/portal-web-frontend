@@ -15,6 +15,7 @@ export class WebsitesResource extends BaseResourceClass<'websites'> {
         'slug',
         'name',
         'domain_alias',
+        'modules',
         'organization.id',
         'organization.name',
         'organization.slug',
