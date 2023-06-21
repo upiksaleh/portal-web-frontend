@@ -13,4 +13,5 @@ export * from './organizations';
 export * from './portal_web_settings';
 export * from './public_services';
 export * from './websites';
+export * from './web_aduan_publik';
 export * from './web_news';

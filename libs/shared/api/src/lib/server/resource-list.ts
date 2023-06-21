@@ -13,6 +13,7 @@ import {
   OrganizationTypesResource,
   PortalWebSettingsResource,
   PublicServicesResource,
+  WebAduanPublikResource,
   WebNewsResource,
   WebsitesResource,
 } from './resources';
@@ -35,6 +36,7 @@ export const resourceLists: Record<keyof DirectusItemsListType | string, any> =
     portal_web_settings: PortalWebSettingsResource,
     public_services: PublicServicesResource,
     websites: WebsitesResource,
+    web_aduan_publik: WebAduanPublikResource,
     web_news: WebNewsResource,
   };
 

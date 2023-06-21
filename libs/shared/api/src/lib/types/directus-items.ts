@@ -13,6 +13,7 @@ import {
   OrganizationTypesItemType,
   PortalWebSettingsItemType,
   PublicServicesItemType,
+  WebAduanPublikItemType,
   WebNewsItemType,
   WebsitesItemType,
 } from './items-type';
@@ -33,5 +34,6 @@ export type DirectusItemsListType = {
   portal_web_settings: PortalWebSettingsItemType;
   public_services: PublicServicesItemType;
   websites: WebsitesItemType;
+  web_aduan_publik: WebAduanPublikItemType;
   web_news: WebNewsItemType;
 };
