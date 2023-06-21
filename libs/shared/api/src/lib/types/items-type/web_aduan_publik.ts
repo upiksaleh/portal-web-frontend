@@ -1,4 +1,4 @@
-import { WebsitesItemType } from "./websites";
+import { WebsitesItemType } from './websites';
 
 export type WebAduanPublikItemType = {
   id: string;
@@ -6,7 +6,7 @@ export type WebAduanPublikItemType = {
   email: string;
   hp: string;
   isi: string;
-  website: string|WebsitesItemType;
+  website: string | WebsitesItemType;
   date_updated?: Date;
   date_created: Date;
 };

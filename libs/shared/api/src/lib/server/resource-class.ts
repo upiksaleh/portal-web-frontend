@@ -79,9 +79,9 @@ export abstract class BaseResourceClass<
     options,
     paramsQuery,
     pathQuery,
-    postData
+    postData,
   }: ApiResourceProps<C> & {
-    postData?: Record<string,any>
+    postData?: Record<string, any>;
     options?: ItemsOptions;
   }): Promise<any> {
     this.pathQuery = pathQuery ?? [];
