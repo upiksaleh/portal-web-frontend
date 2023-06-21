@@ -10,9 +10,6 @@ interface Config {
   // onlyCollections?: CollectionsListType[]
 }
 
-const sendNotFound = (res: NextApiResponse) => {
-  return res.status(404).json('Api not found.');
-};
 const sendError = (res: NextApiResponse, message: any) => {
   return res.status(200).json({
     error: 1,
@@ -37,16 +34,11 @@ export function ApiResourcePage(config: Config) {
     if (resourceLists[p1]) {
       try {
         const _res = new resourceLists[p1]({});
-        // const data = [];
         const data = await _res.apiResourceFetch({
           pathQuery: p2,
           paramsQuery,
+          postData: req.body
         });
-        // const _res = new resourceLists[p1]({
-        //   pathQuery: p2,
-        //   paramsQuery,
-        // });
-        // const data = await _res.fetch();
         res.status(200).json(data);
       } catch (e) {
         if (process.env.NODE_ENV === 'development') {

@@ -49,6 +49,7 @@ export abstract class BaseResourceClass<
   protected searchInParamsQuery = true;
   protected pathQuery: string[] = [];
   protected paramsQuery: Record<string, any> = {};
+  protected postData: Record<string, any> = {};
 
   constructor() {
     this.config();
@@ -78,11 +79,14 @@ export abstract class BaseResourceClass<
     options,
     paramsQuery,
     pathQuery,
+    postData
   }: ApiResourceProps<C> & {
+    postData?: Record<string,any>
     options?: ItemsOptions;
   }): Promise<any> {
     this.pathQuery = pathQuery ?? [];
     this.paramsQuery = paramsQuery ?? {};
+    this.postData = postData ?? {};
 
     if (this.type === 'collection') {
       this.query.meta = '*';
