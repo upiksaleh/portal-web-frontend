@@ -81,7 +81,6 @@ export function UICarousel({
           <div className={'w-full h-full'}>
             <UINextImageBlur
               timeout={0}
-              quality={100}
               sizes="100%"
               fill
               src={item.image}

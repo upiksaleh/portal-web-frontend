@@ -101,6 +101,7 @@ export function UIPagination({
               'btn-disabled': page <= 1,
             })}
             onClick={() => setPage(page - 1)}
+            aria-label='Prev'
           >
             <UIIcon icon="base:chevron-left" className="w-6 h-6 font-bold" />
           </button>
@@ -109,6 +110,7 @@ export function UIPagination({
               'btn-disabled': page >= total_pages,
             })}
             onClick={() => setPage(page + 1)}
+            aria-label='Next'
           >
             <UIIcon icon="base:chevron-right" className="w-6 h-6 font-bold" />
           </button>
