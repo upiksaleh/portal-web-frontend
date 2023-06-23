@@ -1,7 +1,7 @@
 import { FileType } from '@directus/sdk';
 import { rightTrimSlashes, trimSlashes } from '@portal-web/shared-base';
 export const urlAssetCdn = (file: FileType | string) => {
-  const filename_disk = typeof file === 'string' ? file : file.filename_disk;
+  const filename_disk = typeof file === 'string' ? file : (file.filename_disk ?? `${file.fileId}.${file.extension}`);
   return `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/portal-assets/live/${filename_disk}`;
 };
 
