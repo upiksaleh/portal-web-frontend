@@ -10,8 +10,8 @@ export class GrafikInfoResource extends BaseResourceClass<'grafik_info'> {
       fields: ['id', 'publish_date', 'title', 'image.*'],
       sort: ['-publish_date'],
       filter: {
-        status: STATUS_PUBLISHED
-      }
+        status: STATUS_PUBLISHED,
+      },
     };
   }
   protected normalizer(data: Record<string, any>) {

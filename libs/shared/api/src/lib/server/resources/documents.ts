@@ -22,8 +22,8 @@ export class DocumentsResource extends BaseResourceClass<'documents'> {
       limit: 5,
       sort: ['-publish_date'],
       filter: {
-        status: STATUS_PUBLISHED
-      }
+        status: STATUS_PUBLISHED,
+      },
     };
   }
 

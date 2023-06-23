@@ -28,8 +28,8 @@ export class PublicServicesResource extends BaseResourceClass<'public_services'>
         'date_created',
       ],
       filter: {
-        status: STATUS_PUBLISHED
-      }
+        status: STATUS_PUBLISHED,
+      },
     };
   }
 

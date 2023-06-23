@@ -9,8 +9,8 @@ export class BannerInfoResource extends BaseResourceClass<'banner_info'> {
     this.query = {
       fields: ['id', 'link', 'sort', 'title', 'image.*'],
       filter: {
-        status: STATUS_PUBLISHED
-      }
+        status: STATUS_PUBLISHED,
+      },
     };
   }
 

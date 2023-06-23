@@ -25,8 +25,8 @@ export class ApplicationsResource extends BaseResourceClass<'applications'> {
         'organization.slug',
       ],
       filter: {
-        status: STATUS_PUBLISHED
-      }
+        status: STATUS_PUBLISHED,
+      },
     };
   }
 
