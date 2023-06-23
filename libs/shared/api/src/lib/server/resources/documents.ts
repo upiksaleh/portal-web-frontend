@@ -1,6 +1,7 @@
 import { BaseResourceClass } from '../resource-class';
 import { fileFileNormalizer } from '../helpers';
 import { dateUtils } from '@portal-web/shared-base';
+import { STATUS_PUBLISHED } from '../directus';
 
 export class DocumentsResource extends BaseResourceClass<'documents'> {
   protected item = 'documents';
@@ -20,6 +21,9 @@ export class DocumentsResource extends BaseResourceClass<'documents'> {
       ],
       limit: 5,
       sort: ['-publish_date'],
+      filter: {
+        status: STATUS_PUBLISHED
+      }
     };
   }
 

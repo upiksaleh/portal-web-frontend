@@ -1,6 +1,7 @@
 import { BaseResourceClass } from '../resource-class';
 import { imageFileNormalizer } from '../helpers';
 import { dateUtils } from '@portal-web/shared-base';
+import { STATUS_PUBLISHED } from '../directus';
 
 export class PublicServicesResource extends BaseResourceClass<'public_services'> {
   protected item = 'public_services';
@@ -26,6 +27,9 @@ export class PublicServicesResource extends BaseResourceClass<'public_services'>
         'date_updated',
         'date_created',
       ],
+      filter: {
+        status: STATUS_PUBLISHED
+      }
     };
   }
 

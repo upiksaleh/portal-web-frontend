@@ -1,5 +1,6 @@
 import { BaseResourceClass } from '../resource-class';
 import { imageFileNormalizer } from '../helpers';
+import { STATUS_PUBLISHED } from '../directus';
 
 export class ApplicationsResource extends BaseResourceClass<'applications'> {
   protected item = 'applications';
@@ -23,6 +24,9 @@ export class ApplicationsResource extends BaseResourceClass<'applications'> {
         'organization.name',
         'organization.slug',
       ],
+      filter: {
+        status: STATUS_PUBLISHED
+      }
     };
   }
 
