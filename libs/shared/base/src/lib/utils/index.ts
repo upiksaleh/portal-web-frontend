@@ -7,3 +7,4 @@ export function rightTrimSlashes(str) {
 }
 
 export * as dateUtils from './date';
+export * from './next-image-url';
