@@ -7,5 +7,5 @@ export function nextImageUrl({
   width: number;
   quality: number;
 }) {
-  return `/_next/image?url=${decodeURIComponent(url)}&w=${width}&q=${quality}`;
+  return `/_next/image?url=${encodeURIComponent(url)}&w=${width}&q=${quality}`;
 }
