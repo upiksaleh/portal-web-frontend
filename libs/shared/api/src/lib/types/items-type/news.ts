@@ -14,10 +14,14 @@ export type NewsItemType = {
   view_count: number;
   shared_count: number;
   reporter: string;
-  user_created: UserType;
   content: {
     time: number;
     blocks: Record<string, any>[];
     version: string;
   };
+
+  user_created: string | UserType;
+  user_updated: string | UserType;
+  date_updated?: Date;
+  date_created: Date;
 };

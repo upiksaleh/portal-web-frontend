@@ -25,6 +25,7 @@ export class NewsResource extends BaseResourceClass<'news'> {
         'description',
         'slug',
         'publish_date',
+        'date_updated',
         'reporter',
         'image_cover.*',
         'category.id',

@@ -25,6 +25,7 @@ export class WebNewsResource extends BaseResourceClass<'web_news'> {
         'description',
         'slug',
         'publish_date',
+        'date_updated',
         'reporter',
         'image_cover.*',
         'website.id',
