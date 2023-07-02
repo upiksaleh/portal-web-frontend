@@ -29,7 +29,7 @@ export const UISearchInput: FC<UISearchInputProps> = ({
       className="focus-within:border-primary relative flex items-center gap-2 rounded-lg bg-white border border-base-200 px-[9px] w-full py-[6px]"
       onSubmit={_onSubmit}
     >
-      <UIIcon icon="base:magnify" className="w-6 h-6 text-gray-400" />
+      <UIIcon icon="mdi:magnify" className="w-6 h-6 text-gray-400" />
       <input
         type="text"
         name="q"
@@ -47,7 +47,7 @@ export const UISearchInput: FC<UISearchInputProps> = ({
           type="button"
           className="text-base-content"
         >
-          <UIIcon icon="base:close" />
+          <UIIcon icon="mdi:close" />
         </button>
       )}
       <button

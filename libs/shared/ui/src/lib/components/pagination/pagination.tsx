@@ -11,7 +11,7 @@ function SelectPerPage({ items, value, onChange, showSearch = true }) {
             <span className="block truncate">{value}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center">
               <UIIcon
-                icon="base:unfold-more-horizontal"
+                icon="mdi:unfold-more-horizontal"
                 className="h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />
@@ -103,7 +103,7 @@ export function UIPagination({
             onClick={() => setPage(page - 1)}
             aria-label="Prev"
           >
-            <UIIcon icon="base:chevron-left" className="w-6 h-6 font-bold" />
+            <UIIcon icon="mdi:chevron-left" className="w-6 h-6 font-bold" />
           </button>
           <button
             className={clsx('ml-1 btn btn-sm btn-outline', {
@@ -112,7 +112,7 @@ export function UIPagination({
             onClick={() => setPage(page + 1)}
             aria-label="Next"
           >
-            <UIIcon icon="base:chevron-right" className="w-6 h-6 font-bold" />
+            <UIIcon icon="mdi:chevron-right" className="w-6 h-6 font-bold" />
           </button>
         </div>
       </div>

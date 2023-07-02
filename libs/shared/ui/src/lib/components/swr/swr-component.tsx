@@ -1,6 +1,5 @@
 import { FC, ReactElement } from 'react';
 import { SWRResponse } from 'swr';
-import { DirectusItemsListType, useResourceSWR } from '@portal-web/shared-api';
 
 export type UISwrComponentProps = {
   loadingComponent: (data: SWRResponse) => ReactElement;
@@ -10,7 +9,7 @@ export type UISwrComponentProps = {
     ...data
   }: { children: any } & SWRResponse) => ReactElement;
   swrData: SWRResponse;
-  preProcess?: (SWRResponse) => void;
+  preProcess?: (data: SWRResponse) => void;
   children: (data: SWRResponse['data'], swrData: SWRResponse) => ReactElement;
 };
 

@@ -2,7 +2,7 @@ import { DataListWithMeta, DirectusItemsListType } from './types';
 import { ApiResourceProps } from './types';
 import qs from 'qs';
 import useSWR from 'swr';
-import { rightTrimSlashes } from '@portal-web/shared-base';
+import { getNextConfig, rightTrimSlashes } from '@portal-web/shared-base';
 
 const pathQueryStringBuild = (pathQuery) => {
   return pathQuery?.length ? `/${pathQuery?.join('/')}` : '';
@@ -16,9 +16,8 @@ export const resourceUrlKeyBuild = <Key extends keyof DirectusItemsListType>({
   pathQuery,
   paramsQuery,
 }: { key: Key } & ApiResourceProps<Key>) => {
-  const baseResourceUrl = rightTrimSlashes(
-    process.env.NEXT_PUBLIC_API_RESOURCE_BASE_URL ?? '/api/resources'
-  );
+  const { publicRuntimeConfig } = getNextConfig();
+  const baseResourceUrl = rightTrimSlashes(publicRuntimeConfig.resourceBaseUrl);
   return `${baseResourceUrl}/${key}${pathQueryStringBuild(
     pathQuery
   )}${paramsQueryStringBuild(paramsQuery)}`;
