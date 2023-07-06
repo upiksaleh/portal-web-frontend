@@ -10,8 +10,6 @@ export default function UISwrResourceNewsListSimple({
   const loadingComponent = () => (
     <div className="flex-auto w-full flex flex-col gap-5 md:gap-6">
       {[...Array(4)].map((v, index) => {
-        console.log(v);
-
         return (
           <div
             key={index}
